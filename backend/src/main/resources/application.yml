@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:cakeshop;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+
+app:
+  security:
+    jwt:
+      secret: ${APP_JWT_SECRET:UkVsbHlMb25nU2VjcmV0S2V5Rm9yQ2FrZVNob3BQbGF0Zm9ybQ==}
+      expiration-seconds: 7200
+  stripe:
+    secret-key: ${STRIPE_SECRET_KEY:}
+
+logging:
+  level:
+    org.springframework.security: INFO
+    com.cakeshop: DEBUG
